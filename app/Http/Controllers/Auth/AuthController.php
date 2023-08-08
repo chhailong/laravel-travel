@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Place ;
 
 class AuthController extends Controller
 
@@ -36,7 +37,6 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
            
-
         ]);
 
         return response([
@@ -77,7 +77,6 @@ class AuthController extends Controller
 
             $access_token = $user->createToken('authToken')->plainTextToken ;
 
-
             return response([
                 'message' => 'login success',
                 'success' => true,
@@ -100,4 +99,5 @@ class AuthController extends Controller
 //        $user->currentAccessToken()->delete();
 //        return response('', 204);
     }
+
 }

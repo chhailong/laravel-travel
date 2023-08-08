@@ -44,6 +44,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            
             //  \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
              // if enable  this line we  cann't login or register from react (errr 419  unknown status csrf token mismatch )
 

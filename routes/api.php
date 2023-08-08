@@ -3,11 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\LaptopController ;
-
-
-
+use App\Http\Controllers\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,24 +19,23 @@ use App\Http\Controllers\LaptopController ;
 
 // admin routes 
 Route::prefix('admin')->middleware('auth:sanctum' , 'isAdmin')->group(function(){
-        
 
         // optimized routes
-        // Route::resource('laptops', LaptopController::class);
-
-
+        // Route::resource('places', PlaceController::class);
         // detailed routes
-        Route::get('laptops',[LaptopController::class,'index']);
-        Route::post('laptops',[LaptopController::class,'store']);
-        Route::get('laptops/{id}',[LaptopController::class,'show']);
-        Route::put('laptops/{id}',[LaptopController::class,'update']);
-        Route::delete('laptops/{id}',[LaptopController::class,'destroy']);
+        Route::get('places',[PlaceController::class,'index']);
+        Route::post('places',[PlaceController::class,'store']);
+        Route::get('places/{id}',[PlaceController::class,'show']);
+        Route::put('places/{id}',[PlaceController::class,'update']);
+        Route::delete('places/{id}',[PlaceController::class,'destroy']);
+
 });
 
 
-// public routes
+// Public routes
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
-Route::get('/laptops',[LaptopController::class,'index']);
-Route::get('laptops/{id}',[LaptopController::class,'show']);
 
+Route::get('/places',[PlaceController::class,'index']);
+Route::get('/places/{id}',[PlaceController::class,'show']);
+Route::get('/places/search/{title}' , [PlaceController::class , 'search']);
